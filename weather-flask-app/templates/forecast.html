@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогноз погоды</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .forecast-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+        .day-card { border: 1px solid #ddd; padding: 15px; border-radius: 8px; }
+        .day-card h3 { margin: 0 0 10px; font-size: 16px; }
+        .temp-max { color: #e74c3c; }
+        .temp-min { color: #3498db; }
+        .back-btn { display: inline-block; margin-top: 20px; color: #007bff; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Прогноз погоды на 7 дней</h1>
+    <p>Координаты: {{ latitude }}, {{ longitude }}</p>
+
+    <div class="forecast-grid">
+        {% for day in forecast %}
+        <div class="day-card">
+            <h3>{{ day.date }}</h3>
+            <p>
+                <span class="temp-max">↑ {{ day.temp_max }}°</span> /
+                <span class="temp-min">↓ {{ day.temp_min }}°</span>
+            </p>
+            <p>{{ day.description }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <a href="/" class="back-btn">← На главную</a>
+</body>
+</html>
