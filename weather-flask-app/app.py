@@ -50,7 +50,7 @@ def get_weather():
         return render_template('error.html', error="Непредвиденная ошибка"), 500
 
 
-@app.route('/forecast')
+@app.route('/forecast', methods=['GET'])
 def get_forecast():
     try:
         latitude = request.args.get('lat', default=55.7558, type=float)
