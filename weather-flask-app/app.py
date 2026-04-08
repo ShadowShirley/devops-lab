@@ -12,6 +12,11 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
+
 @app.route('/weather', methods=['GET'])
 def get_weather():
     try:

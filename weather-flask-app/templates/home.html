@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная — Погодный сервис</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: Arial, sans-serif; background: #f0f4f8; color: #333; }
+        header {
+            background: #007bff;
+            color: white;
+            padding: 16px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        header h1 { font-size: 22px; }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 15px;
+            opacity: 0.9;
+        }
+        nav a:hover { opacity: 1; text-decoration: underline; }
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+        .hero h2 { font-size: 36px; margin-bottom: 12px; }
+        .hero p { font-size: 17px; color: #555; margin-bottom: 30px; }
+        .btn {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 6px;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #007bff;
+            color: #007bff;
+        }
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 30px 20px 50px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 24px;
+            width: 260px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .card .icon { font-size: 40px; margin-bottom: 12px; }
+        .card h3 { margin-bottom: 8px; }
+        .card p { font-size: 14px; color: #666; margin-bottom: 16px; }
+        .card a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer {
+            text-align: center;
+            padding: 16px;
+            background: #e9ecef;
+            font-size: 13px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Погодный сервис</h1>
+    <nav>
+        <a href="/">Главная</a>
+        <a href="/weather">Погода</a>
+        <a href="/forecast">Прогноз</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <h2>Узнайте погоду в любой точке мира</h2>
+    <p>Введите координаты или выберите город — получите актуальные данные и прогноз на 7 дней</p>
+    <a href="/weather" class="btn">Текущая погода</a>
+    <a href="/forecast" class="btn btn-outline">Прогноз на 7 дней</a>
+</div>
+
+<div class="cards">
+    <div class="card">
+        <div class="icon">🌡️</div>
+        <h3>Текущая погода</h3>
+        <p>Температура, ветер, описание погоды по координатам прямо сейчас</p>
+        <a href="/weather">Открыть →</a>
+    </div>
+    <div class="card">
+        <div class="icon">📅</div>
+        <h3>Прогноз на 7 дней</h3>
+        <p>Максимальная и минимальная температура, погодные условия на неделю вперёд</p>
+        <a href="/forecast">Открыть →</a>
+    </div>
+    <div class="card">
+        <div class="icon">🗺️</div>
+        <h3>Быстрый выбор города</h3>
+        <p>Москва, Санкт-Петербург, Лондон, Нью-Йорк, Токио — один клик</p>
+        <a href="/">Поиск →</a>
+    </div>
+</div>
+
+<footer>
+    Данные предоставлены open-meteo.com — бесплатный открытый API
+</footer>
+
+</body>
+</html>
