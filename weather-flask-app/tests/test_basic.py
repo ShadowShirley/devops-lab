@@ -5,7 +5,7 @@ import os
 def test_import_app():
     try:
         sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-        from app import app, get_weather_description
+        from app import app
         assert app is not None
         print("Приложение импортируется корректно")
         return True

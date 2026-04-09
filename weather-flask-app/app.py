@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
 import requests
-import os
 
 app = Flask(__name__)
 
@@ -46,7 +45,7 @@ def get_weather():
 
     except requests.exceptions.RequestException as e:
         return render_template('error.html', error=str(e)), 500
-    except Exception as e:
+    except Exception:
         return render_template('error.html', error="Непредвиденная ошибка"), 500
 
 
