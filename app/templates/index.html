@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Агрегатор погодных данных</h1>
+
+<div class="card">
+    <form method="POST" action="/collect" style="display:flex;gap:10px;align-items:center;">
+        <input type="text" name="city" placeholder="Введите город (напр. Москва)" required>
+        <button type="submit" class="btn">Собрать данные</button>
+    </form>
+</div>
+
+{% if result %}
+<div class="card">
+    <div class="muted" style="font-size:13px;margin-bottom:12px;">📍 {{ result.city }}</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        {% for r in result.records %}
+        <div style="background:#0d1117;border:1px solid #30363d;border-radius:6px;padding:14px;">
+            <div class="muted" style="font-size:11px;margin-bottom:4px;">{{ r.source }}</div>
+            <div class="temp" style="font-size:28px;">
+                {% if r.temperature is not none %}{{ r.temperature }}°C{% else %}—{% endif %}
+            </div>
+            <div class="muted" style="font-size:12px;margin-top:6px;">
+                {% if r.humidity %}Влажность: {{ r.humidity }}%{% endif %}
+                {% if r.wind_speed %} · Ветер: {{ r.wind_speed }} м/с{% endif %}
+            </div>
+            {% if r.description %}
+            <div style="font-size:12px;color:#7ee787;margin-top:4px;">{{ r.description }}</div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% if result.errors %}
+    <div style="margin-top:10px;font-size:12px;color:#f85149;">
+        {% for e in result.errors %}⚠ {{ e }}<br>{% endfor %}
+    </div>
+    {% endif %}
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>История сборов</h1>
+<div class="card">
+    {% if rows %}
+    <table>
+        <thead>
+            <tr>
+                <th>Время</th><th>Город</th><th>Источник</th>
+                <th>Темп.</th><th>Влажность</th><th>Ветер</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                <td class="muted">{{ row.fetched_at.strftime('%d.%m %H:%M') }}</td>
+                <td>{{ row.city }}</td>
+                <td class="muted">{{ row.source }}</td>
+                <td class="temp">
+                    {% if row.temperature is not none %}{{ row.temperature }}°C{% else %}—{% endif %}
+                </td>
+                <td>{% if row.humidity is not none %}{{ row.humidity }}%{% else %}—{% endif %}</td>
+                <td>{% if row.wind_speed is not none %}{{ row.wind_speed }} м/с{% else %}—{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="muted">Данных пока нет. Соберите первую запись на главной странице.</p>
+    {% endif %}
+</div>
+{% endblock %}

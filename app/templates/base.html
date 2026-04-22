@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WeatherAgg</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, sans-serif; background: #0d1117; color: #e6edf3; min-height: 100vh; }
+        nav { background: #161b22; border-bottom: 1px solid #30363d; padding: 12px 24px; display: flex; gap: 24px; align-items: center; }
+        nav a { color: #8b949e; text-decoration: none; font-size: 14px; }
+        nav .brand { color: #58a6ff; font-weight: bold; margin-right: 12px; }
+        nav a:hover, nav a.active { color: #e6edf3; }
+        main { max-width: 960px; margin: 32px auto; padding: 0 24px; }
+        h1 { font-size: 22px; margin-bottom: 20px; }
+        .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+        .btn { background: #238636; color: #fff; border: none; padding: 8px 18px; border-radius: 6px; cursor: pointer; font-size: 14px; }
+        .btn:hover { background: #2ea043; }
+        input[type=text] { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 8px 12px; color: #e6edf3; font-size: 14px; width: 280px; }
+        .flash { background: #3d1212; border: 1px solid #f85149; border-radius: 6px; padding: 10px 16px; margin-bottom: 16px; font-size: 13px; color: #ff7b72; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #21262d; }
+        th { color: #8b949e; font-weight: 500; }
+        .muted { color: #8b949e; }
+        .temp { color: #79c0ff; font-weight: bold; }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="/" class="brand">🌤 WeatherAgg</a>
+    <a href="/" {% if request.path == '/' %}class="active"{% endif %}>Главная</a>
+    <a href="/analytics">Аналитика ↗</a>
+    <a href="/admin">Администрирование ↗</a>
+    <a href="/logs" {% if request.path == '/logs' %}class="active"{% endif %}>Логи</a>
+</nav>
+<main>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}{% for msg in messages %}<div class="flash">{{ msg }}</div>{% endfor %}{% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>
