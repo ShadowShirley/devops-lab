@@ -67,5 +67,11 @@ docker-compose down -v       # остановить и удалить volumes
 
 ## Скриншоты
 
-<!-- Добавить после первого запуска -->
+![Главная страница](docs/screenshots/Screenshot%20from%202026-04-22%2010-04-35.png)
+
+![Логи](docs/screenshots/Screenshot%20from%202026-04-22%2010-04-52.png)
+
+![Metabase дашборд](docs/screenshots/Screenshot%20from%202026-04-22%2010-06-25.png)
+
+![pgAdmin](docs/screenshots/Screenshot%20from%202026-04-22%2010-06-39.png)
 
