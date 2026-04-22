@@ -1,8 +1,10 @@
-import sys, os
+import sys
+import os
+
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-import pytest
-from normalizer import normalize, WeatherRecord
+import pytest  # noqa: E402
+from normalizer import normalize, WeatherRecord  # noqa: E402
 
 OWM_SAMPLE = {
     "name": "Moscow",

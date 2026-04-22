@@ -1,9 +1,11 @@
-import sys, os
+import sys
+import os
+
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
-import pytest
-from unittest.mock import patch, MagicMock
-from sources import fetch_openweathermap, fetch_openmeteo
+import pytest  # noqa: E402
+from unittest.mock import patch, MagicMock  # noqa: E402
+from sources import fetch_openweathermap, fetch_openmeteo  # noqa: E402
 
 OWM_RESPONSE = {
     "name": "Moscow",
